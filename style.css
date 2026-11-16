@@ -1,0 +1,118 @@
+:root {
+  --bg: #c1b5a7;
+  --text: #3b3b3b;
+  --heading: #3b3b3b;
+  --link: #654f36;
+  --cards: #a3927e75;
+  --border: #444444;
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
+html.dark {
+  --bg: #003335;
+  --text: #e8e8e8;
+  --heading: #e8e8e8;
+  --link: #4fd1c5;
+  --cards: #001a1b69;
+  --border: black;
+  --shadow: rgba(255, 255, 255, 0.18);
+}
+
+body {
+  font-family: sans-serif;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 16px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+}
+h1 { color: var(--heading); }
+a { color: var(--link); }
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+
+#theme-toggle {
+  margin-left: auto;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 0px solid var(--border);
+  background: var(--cards);
+  color: var(--text);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.fade {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, black 0.5%, black 99.5%, transparent),
+    linear-gradient(to bottom, transparent, black 1%, black 99%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, black 0.5%, black 99.5%, transparent),
+    linear-gradient(to bottom, transparent, black 1%, black 99%, transparent);
+  mask-composite: intersect;
+}
+
+.karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.karte {
+  border: 0px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  background: var(--cards);
+}
+
+.karte h3 {
+  margin-top: 0;
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 2px solid var(--border);
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+body {
+  transition: background 0.3s, color 0.3s;
+}
+
+.karte {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.karte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+#theme-toggle:hover {
+  opacity: 0.7;
+}

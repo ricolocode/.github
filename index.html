@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meine erste Webseite</title>
+<script>
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Start</a>
+    <a href="ueber-mich.html">Über mich</a>
+<button id="theme-toggle">🌙 Dunkel</button>
+  </nav>
+
+  <h1>Hallo Welt!</h1>
+  <p>Das ist meine erste Webseite. Hier lerne ich, wie Webseiten funktionieren.</p>
+
+  <h2>Das möchte ich lernen</h2>
+  <ul>
+    <li>HTML: der Aufbau einer Seite</li>
+    <li>CSS: das Aussehen</li>
+    <li>Später vielleicht: etwas Interaktives</li>
+  </ul>
+
+<div class="karten">
+  <div class="karte">
+    <h3>HTML</h3>
+    <p>Struktur und Inhalt</p>
+  </div>
+  <div class="karte">
+    <h3>CSS</h3>
+    <p>Farben und Layout</p>
+  </div>
+  <div class="karte">
+    <h3>JavaScript</h3>
+    <p>Interaktion</p>
+  </div>
+</div>
+
+  <p>Mehr zum Nachlesen: <a href="https://developer.mozilla.org/de/" target="_blank">MDN Web Docs</a></p>
+
+<footer>
+  <p>© 2026 · Meine erste Webseite</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

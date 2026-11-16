@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Über mich</title>
+<script>
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Start</a>
+    <a href="ueber-mich.html">Über mich</a>
+    <button id="theme-toggle">🌙 Dunkel</button>
+  </nav>
+
+  <h1>Über mich</h1>
+  <img class="fade" src="misty-autumn-forest-reflected-calm-lake.jpg" alt="an immage of a misty autumn forest reflected by a calm lake">
+  <p>Hi! Ich bin Alex.</p>
+
+<footer>
+  <p>© 2026 · Meine erste Webseite</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
