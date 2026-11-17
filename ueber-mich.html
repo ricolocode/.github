@@ -9,9 +9,13 @@
     />
     <title>Über mich</title>
     <script>
-      if (localStorage.getItem("theme") === "dark") {
-        document.documentElement.classList.add("dark");
-      }
+      try {
+        const farbe = localStorage.getItem("farbe") || "weiß";
+        document.documentElement.dataset.theme = farbe;
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
     </script>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -21,9 +25,24 @@
   </head>
   <body>
     <nav>
-      <a href="index.html">Start</a>
-      <a href="ueber-mich.html" class="aktiv">Über mich </a>
-      <button id="theme-toggle">🌙 Dunkel</button>
+      <a href="index.html" class="aktiv">Start</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <div class="einstellungen">
+        <button id="settings-toggle" aria-expanded="false">Design</button>
+        <div id="settings-panel" hidden>
+          <p class="label">Farbe</p>
+          <div class="swatches">
+            <button class="swatch" data-farbe="baige" aria-label="Baige"></button>
+            <button class="swatch" data-farbe="turquise" aria-label="Turquise"></button>
+            <button class="swatch" data-farbe="weiß" aria-label="Weiß"></button>
+          </div>
+          <p class="label">Modus</p>
+          <div class="modus">
+            <button data-mode="light">Hell</button>
+            <button data-mode="dark">Dunkel</button>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <h1>Über mich</h1>
@@ -32,7 +51,7 @@
       src="misty-autumn-forest-reflected-calm-lake.jpg"
       alt="an immage of a misty autumn forest reflected by a calm lake"
     />
-    <p>Hi! Ich bin Alex.</p>
+    <p>Hi! Ich bin Rico.</p>
 
     <footer>
       <p>© 2026 · Meine erste Webseite</p>

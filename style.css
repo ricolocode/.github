@@ -1,5 +1,8 @@
-:root {
+html[data-theme="baige"] {
   --bg: #c1b5a7;
+  --bg1: #9abcb7;
+  --bg2: #ffffff;
+  --bg3: #c1b5a7;
   --text: #3b3b3b;
   --heading: #3b3b3b;
   --link: #654f36;
@@ -8,18 +11,162 @@
   --shadow: rgba(0, 0, 0, 0.25);
 }
 
-html.dark {
+html[data-theme="baige"].dark {
+  --bg: #332822;
+  --bg1: #003335;
+  --bg2: #000000;
+  --bg3: #332822;
+  --text: #ffffff;
+  --heading: #ffffff;
+  --link: #d2ac81;
+  --cards: #312119a8;
+  --border: black;
+  --shadow: rgb(0 0 0 / 48%);
+}
+
+html[data-theme="turquise"] {
+  --bg: #9abcb7;
+  --bg1: #9abcb7;
+  --bg2: #ffffff;
+  --bg3: #c1b5a7;
+  --text: #12312f;
+  --heading: #12312f;
+  --link: #0b5d57;
+  --cards: #72b0a9;
+  --border: #3b7873;
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="turquise"].dark {
   --bg: #003335;
+  --bg1: #003335;
+  --bg2: #000000;
+  --bg3: #432c20;
   --text: #e8e8e8;
   --heading: #e8e8e8;
   --link: #4fd1c5;
   --cards: #001a1b69;
   --border: black;
-  --shadow: rgba(255, 255, 255, 0.18);
+  --shadow: rgb(0 0 0 / 46%);
+}
+
+html[data-theme="schwarz/weiß"] {
+  --bg: #ffffff;
+  --bg1: #9abcb7;
+  --bg2: #ffffff;
+  --bg3: #c1b5a7;
+  --text: #353434;
+  --heading: #383838;
+  --link: #7e7e7e;
+  --cards: #dfdfdf;
+  --border: #000000c4;
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="schwarz/weiß"].dark {
+  --bg: #000000;
+  --bg1: #003335;
+  --bg2: #000000;
+  --bg3: #432c20;
+  --text: #ffffff;
+  --heading: #fafafade;
+  --link: #a3a3a3;
+  --cards: #232323;
+  --border: #545454;
+  --shadow: rgb(0 0 0 / 46%);
+}
+
+@font-face {
+  font-family: "Sniglet";
+  src: url("Sniglet/Sniglet-Regular.ttf");
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* Menü */
+.einstellungen {
+  position: relative;
+  margin-left: auto;
+}
+
+#settings-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 10;
+  width: 220px;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+#settings-panel .label {
+  margin: 0 0 8px;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+#settings-panel .label:not(:first-child) {
+  margin-top: 16px;
+}
+
+/* Farbwahl */
+.swatches {
+  display: flex;
+  gap: 10px;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.swatch[data-farbe="baige"] {
+  background: var(--bg3);
+}
+.swatch[data-farbe="turquise"] {
+  background: var(--bg1);
+}
+.swatch[data-farbe="schwarz/weiß"] {
+  background: var(--bg2);
+}
+
+.swatch[aria-pressed="true"] {
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 4px var(--text),
+    0 4px 12px var(--shadow);
+}
+
+/* Modus-Wahl */
+.modus {
+  display: flex;
+  gap: 8px;
+}
+
+.modus button {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.modus button[aria-pressed="true"] {
+  background: var(--cards);
+  border-color: var(--cards);
+  color: var(--text);
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Sniglet", sans-serif;
   max-width: 900px;
   margin: 40px auto;
   padding: 0 16px;
@@ -43,7 +190,7 @@ nav {
   border-bottom: 2px solid var(--border);
 }
 
-#theme-toggle {
+#settings-toggle {
   margin-left: auto;
   cursor: pointer;
   padding: 6px 12px;
@@ -109,25 +256,28 @@ footer {
 }
 
 .karte,
-#theme-toggle {
-  transition: transform 0.2s, box-shadow 0.2s;
-  -webkit-tap-highlight-color: transparent;
+#settings-toggle {
+  box-shadow: 0 8px 24px var(--shadow);
 }
 
 /* Maus: nur auf Geräten, die wirklich hovern können */
 @media (hover: hover) {
   .karte:hover,
-  #theme-toggle:hover {
+  #settings-toggle:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 0 var(--shadow);
+    box-shadow: 0 12px 28px var(--shadow);
   }
+}
+
+.swatch {
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 /* Touch und Mausklick: solange gedrückt wird */
 .karte:active,
-#theme-toggle:active {
+#settings-toggle:active {
   transform: translateY(-4px);
-  box-shadow: 0 4px 0 var(--shadow);
+  box-shadow: 0 12px 28px var(--shadow);
 }
 
 body {
@@ -146,5 +296,4 @@ nav a:hover {
 
 nav a.aktiv {
   font-weight: bold;
-  text-decoration: underline;
 }

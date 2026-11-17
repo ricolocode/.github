@@ -9,9 +9,13 @@
     />
     <title>Meine erste Webseite</title>
     <script>
-      if (localStorage.getItem("theme") === "dark") {
-        document.documentElement.classList.add("dark");
-      }
+      try {
+        const farbe = localStorage.getItem("farbe") || "schwarz/weiß";
+        document.documentElement.dataset.theme = farbe;
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
     </script>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -23,7 +27,34 @@
     <nav>
       <a href="index.html" class="aktiv">Start</a>
       <a href="ueber-mich.html">Über mich</a>
-      <button id="theme-toggle">🌙 Dunkel</button>
+      <div class="einstellungen">
+        <button id="settings-toggle" aria-expanded="false">☰</button>
+        <div id="settings-panel" hidden>
+          <p class="label">Farbe</p>
+          <div class="swatches">
+            <button
+              class="swatch"
+              data-farbe="baige"
+              aria-label="Baige"
+            ></button>
+            <button
+              class="swatch"
+              data-farbe="turquise"
+              aria-label="Turquise"
+            ></button>
+            <button
+              class="swatch"
+              data-farbe="schwarz/weiß"
+              aria-label="Schwaz/Weiß"
+            ></button>
+          </div>
+          <p class="label">Modus</p>
+          <div class="modus">
+            <button data-mode="light">Hell</button>
+            <button data-mode="dark">Dunkel</button>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <h1>Hallo Welt!</h1>
@@ -35,7 +66,7 @@
     <ul>
       <li>HTML: der Aufbau einer Seite</li>
       <li>CSS: das Aussehen</li>
-      <li>Später vielleicht: etwas Interaktives</li>
+      <li>JS: die Interaktionen</li>
     </ul>
 
     <div class="karten">
@@ -49,7 +80,7 @@
       </div>
       <div class="karte">
         <h3>JavaScript</h3>
-        <p>Interaktion</p>
+        <p>Theme Einstellungen</p>
       </div>
     </div>
 
