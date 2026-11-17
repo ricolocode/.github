@@ -78,7 +78,7 @@ html[data-theme="schwarz/weiß"].dark {
 
 @font-face {
   font-family: "Sniglet";
-  src: url("Sniglet/Sniglet-Regular.ttf");
+  src: url("Sniglet-Regular.ttf");
   font-weight: normal;
   font-display: swap;
 }
